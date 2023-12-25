@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
+#include <stdbool.h>
 #include <unistd.h>
 #include <sys/inotify.h>
 
@@ -28,7 +30,7 @@ static void handle_events(const char *stream) {
   ssize_t len;
   struct inotify_event *event;
 
-  for(;;) {
+  while(true) {
     printf("Listening for events\n");
 
     len = read(fd, buffer, EVENT_BUFFER_SIZE);
